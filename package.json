@@ -1,0 +1,51 @@
+{
+  "name": "basin",
+  "version": "0.0.1",
+  "description": "Deploy sites to Amazon S3",
+  "homepage": [
+    ""
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "amazon",
+    "s3",
+    "web",
+    "site",
+    "domain",
+    "deploy"
+  ],
+  "author": "JP Richardson <jprichardson@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "dependencies": {
+    "commander": "~1.1.1",
+    "s3": "0.0.4",
+    "knox": "~0.4.6",
+    "aws-sdk": "~0.9.1-pre.2",
+    "fs-extra": "~0.3.2",
+    "awssum": "~0.12.2",
+    "node-uuid": "~1.4.0",
+    "autoresolve": "0.0.3"
+  },
+  "devDepdencies": {},
+  "main": "./lib/basin.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "bin": {
+    "basin": "./bin/basin"
+  },
+  "preferGlobal": true,
+  "devDependencies": {
+    "testutil": "~0.3.0",
+    "string": "~1.1.0",
+    "batchflow": "~0.3.0"
+  }
+}

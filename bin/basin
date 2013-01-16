@@ -1,80 +1,60 @@
 #!/usr/bin/env node
 
-/*var knox = require('knox')
-  , fs = require('fs-extra')
-  , s3 = require('s3')
-
-var creds = fs.readJSONFileSync('./test/resources/s3.json')
-  , knoxClient = knox.createClient(creds)
-  , s3Client = s3.fromKnox(knoxClient)
-
-s3Client.upload("/Users/jp/Desktop/370784d.pdf", "Desktop/something.pdf")
-.on('error', function(err) {
-  console.error(err)
-})
-.on('progress', function(amountDone, amountTotal) {
-  console.log("%d/%d", amountDone, amountTotal)
-})
-.on('end', function() {
-  console.log('Done')
-})*/
-
-var awssum = require('awssum')
-  , amazon = awssum.load('amazon/amazon')
-  , S3 = awssum.load('amazon/s3').S3
+var program = require('commander')
+  , basin = require('../lib/basin')
+  , S3 = require('../lib/S3').S3
   , fs = require('fs-extra')
 
-var options = {
-  BucketName: 'adfafasdfasd',
-  IndexDocument: 'index.html',
-  ErrorDocument: 'error.html'
-}
+program
+  .version(require('../package').version)
+  .option('--create [dir]', 'Creates a skeleton site at the destination directory.')
+  .option('--deploy', 'Deploys/publishes the current directory and sub directories. Must have basin.conf.json file present.')
+  .option('--remote-delete', 'Deletes the remote S3 bucket. Must have basin.conf.json file present in current directory.')
+  .parse(process.argv)
 
-var s3 = new S3(fs.readJSONFileSync('./test/resources/s4.json'))
-
-s3.CreateBucket({ BucketName : 'adfafasdfasd' }, function(err, data) {
-  if (err)
-    console.error(err)
-  else
-    console.log(data)
-
-  s3.PutBucketWebsite(options, function(err, data) {
-    if (err)
+if (program.create) {
+  basin.create(program.create, function(err) {
+    if (err) {
       console.error(err)
-    else
-      console.log(data)
-  });
-});
+      process.exit(1)
+    }
 
-return;
+    console.log('Created at ' + program.create)
+  })
 
-
-var AWS = require('aws-sdk');
-
-AWS.config.loadFromPath('./test/resources/s4.json');
-
-// Set your region for future requests.
-AWS.config.update({region: 'us-east-1'});
-
-siteConfig = {
-  Bucket: 'www.somedomain.com',
-  WebsiteConfiguration: {
-    Bucket: 'www.somedomain.com',
-    IndexDocument: {Suffix: 'index.html'},
-    ErrorDocument: {Key: 'error.html'}
-  },
-  Body: 'hello'
+  return
 }
 
-var s3 = new AWS.S3();
-s3.client.createBucket(siteConfig, function(err, data) {
-  console.dir(err)
-  console.dir(data)
-  setTimeout(function() {
-    s3.client.putBucketWebsite(siteConfig, siteConfig, function(err, data) {
-      console.dir(err)
-      console.dir(data)
-    })
-  },500)
-});
+if (program.deploy) {
+  checkBasinConfExists()
+  basin.deploy(function(err, url) {
+    if (err) {
+      console.error(err)
+      process.exit(2)
+    }
+    console.log('Deployed to ' + url)
+  })
 
+  return
+}
+
+if (program.remoteDelete) {
+  checkBasinConfExists()
+  var basinConf = fs.readJSONFileSync('./basin.conf.json')
+  var s3 = new S3(basinConf)
+  s3.deleteBucket(basinConf.bucket, function(err) {
+    if (err) {
+      console.error(err)
+      process.exit(3)
+    }
+    console.log('Deleted.')
+  })
+}
+
+
+function checkBasinConfExists () {
+  if (!fs.existsSync('./basin.conf.json')) {
+    console.error('./basin.conf.json does not exist.')
+    process.exit(10)
+  }
+}

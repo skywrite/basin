@@ -76,7 +76,7 @@ describe('basin', function() {
         //console.log(url)
 
         basin.deploy(function(err) {
-          if (err) console.error('ERR: ' + err)
+          if (err) return done(err)
 
           var flow;
           next(flow = {

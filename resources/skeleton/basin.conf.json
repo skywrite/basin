@@ -1,0 +1,9 @@
+{
+  "key": "",
+  "secret": "",
+  "bucket": "",
+  "site": {
+    "index": "index.html",
+    "error": "error.html"
+  }
+}

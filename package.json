@@ -32,7 +32,10 @@
     "fs-extra": "~0.3.2",
     "awssum": "~0.12.2",
     "node-uuid": "~1.4.0",
-    "autoresolve": "0.0.3"
+    "autoresolve": "0.0.3",
+    "walker": "~1.0.3",
+    "qflow": "0.0.2",
+    "triggerflow": "0.0.3"
   },
   "devDepdencies": {},
   "main": "./lib/basin.js",
@@ -46,6 +49,8 @@
   "devDependencies": {
     "testutil": "~0.3.0",
     "string": "~1.1.0",
-    "batchflow": "~0.3.0"
+    "batchflow": "~0.3.0",
+    "nextflow": "~0.3.0",
+    "scrap": "0.0.2"
   }
 }

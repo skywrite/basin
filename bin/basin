@@ -4,6 +4,7 @@ var program = require('commander')
   , basin = require('../lib/basin')
   , S3 = require('../lib/S3').S3
   , fs = require('fs-extra')
+  , cl = require('cl')
 
 program
   .version(require('../package').version)
@@ -28,10 +29,7 @@ if (program.create) {
 if (program.deploy) {
   checkBasinConfExists()
   basin.deploy(function(err, url) {
-    if (err) {
-      console.error(err)
-      process.exit(2)
-    }
+    if (err) cl.exit(100, err)
     console.log('Deployed to ' + url)
   })
 
@@ -43,18 +41,13 @@ if (program.remoteDelete) {
   var basinConf = fs.readJSONFileSync('./basin.conf.json')
   var s3 = new S3(basinConf)
   s3.deleteBucket(basinConf.bucket, function(err) {
-    if (err) {
-      console.error(err)
-      process.exit(3)
-    }
+    if (err) cl.exit(101, err)
     console.log('Deleted.')
   })
 }
 
 
 function checkBasinConfExists () {
-  if (!fs.existsSync('./basin.conf.json')) {
-    console.error('./basin.conf.json does not exist.')
-    process.exit(10)
-  }
+  if (!fs.existsSync('./basin.conf.json')) 
+    cl.exit(103,'./basin.conf.json does not exist.')
 }

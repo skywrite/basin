@@ -66,11 +66,11 @@ describe('basin', function() {
         F (err)
 
         process.chdir(dir)
-        var s3json = fs.readJSONFileSync('./basin.conf.json')
+        var s3json = fs.readJsonSync('./basin.conf.json')
         s3json.secret = S3_AUTH.secret
         s3json.key = S3_AUTH.key
         s3json.bucket = name
-        fs.writeJSONFileSync('./basin.conf.json', s3json)
+        fs.writeJsonSync('./basin.conf.json', s3json)
 
         var url = 'http://' + name + '.s3-website-us-east-1.amazonaws.com';
         //console.log(url)
@@ -116,14 +116,17 @@ describe('basin', function() {
                 flow.next()
               })
             },
-            checkBasinConf: function() {
+            checkBasinConfNotUploaded: function() {
               scrap(url + 'basin.conf.json', function(err, $, code, html) {
                 T (code !== 200)
                 flow.next()
               })
             },
-            done: function() {
-              done() 
+            checkBasinConfHasLastDeploy: function() {
+              var conf = fs.readJsonSync('./basin.conf.json')
+              T (conf.key)
+              T (conf.lastDeployed)
+              done()
             }
           })
         })
@@ -131,3 +134,5 @@ describe('basin', function() {
     })
   })
 })
+
+

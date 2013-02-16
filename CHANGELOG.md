@@ -1,3 +1,8 @@
+0.1.1 / 2013-02-16
+------------------
+* Added `lastDeployed` field to `basin.conf.json`.
+* Only deploy if files changed are after `lastDeployed`.
+
 0.1.0 / 2013-02-11
 ------------------
 * Forgot `batchflow` dep.

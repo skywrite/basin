@@ -1,6 +1,6 @@
 {
   "name": "basin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Deploy sites to Amazon S3",
   "homepage": [
     ""

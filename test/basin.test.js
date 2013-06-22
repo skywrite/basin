@@ -117,7 +117,7 @@ describe('basin', function() {
               })
             },
             checkBasinConfNotUploaded: function() {
-              scrap(url + 'basin.conf.json', function(err, $, code, html) {
+              scrap(url + '/basin.conf.json', function(err, $, code, html) {
                 T (code !== 200)
                 flow.next()
               })

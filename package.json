@@ -2,9 +2,7 @@
   "name": "basin",
   "version": "0.1.1",
   "description": "Deploy sites to Amazon S3",
-  "homepage": [
-    ""
-  ],
+  "homepage": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/skywrite/basin"
@@ -55,6 +53,7 @@
     "testutil": "~0.5.1",
     "string": "~1.1.0",
     "nextflow": "~0.3.0",
-    "scrap": "0.0.2"
+    "scrap": "0.0.2",
+    "mocha": "~1.11.0"
   }
 }

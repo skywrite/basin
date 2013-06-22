@@ -7,7 +7,7 @@ var basin = require('../lib/basin')
   , next = require('nextflow')
   , scrap = require('scrap')
   , S = require('string')
-  , S3 = require('../lib/S3').S3
+  , S3 = require('../lib/s3').S3
   , batch = require('batchflow')
 
 var TEST_DIR = ''

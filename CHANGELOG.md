@@ -1,3 +1,9 @@
+0.2.0 / 2013-06-22
+------------------
+* updated deps `batchflow`, `qflow`, `s3`, and `knox` for Node v0.10
+* fixed bad test case
+* changed output to be a bit cleaner
+
 0.1.1 / 2013-02-16
 ------------------
 * Added `lastDeployed` field to `basin.conf.json`.

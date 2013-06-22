@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+ process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0
+
 var program = require('commander')
   , basin = require('../lib/basin')
   , S3 = require('../lib/S3').S3
@@ -30,7 +32,7 @@ if (program.deploy) {
   checkBasinConfExists()
   basin.deploy(function(err, url) {
     if (err) cl.exit(100, err)
-    console.log('Deployed to ' + url)
+    console.log('  \n  successfully deployed to %s\n', colors.bold(colors.red(url)))
   })
 
   return

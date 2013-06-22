@@ -26,23 +26,23 @@
   ],
   "dependencies": {
     "commander": "~1.1.1",
-    "s3": "0.0.4",
-    "knox": "~0.4.6",
+    "s3": "~0.3.0",
+    "knox": "~0.8.3",
     "aws-sdk": "~0.9.1-pre.2",
     "fs-extra": "~0.5.0",
     "awssum": "~0.12.2",
     "node-uuid": "~1.4.0",
     "autoresolve": "0.0.3",
     "walker": "~1.0.3",
-    "qflow": "0.0.2",
+    "qflow": "~0.1.0",
     "triggerflow": "~0.1.0",
-    "batchflow": "~0.3.2",
+    "batchflow": "~0.4.0",
     "mime-magic": "~0.4.2",
     "mime": "~1.2.9",
     "cl": "0.0.1",
-    "path-extra": "0.0.3"
+    "path-extra": "0.0.3",
+    "colors": "~0.6.0-1"
   },
-  "devDepdencies": {},
   "main": "./lib/basin.js",
   "scripts": {
     "test": "mocha test"
@@ -52,7 +52,7 @@
   },
   "preferGlobal": true,
   "devDependencies": {
-    "testutil": "~0.3.0",
+    "testutil": "~0.5.1",
     "string": "~1.1.0",
     "nextflow": "~0.3.0",
     "scrap": "0.0.2"

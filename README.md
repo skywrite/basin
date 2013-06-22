@@ -1,7 +1,7 @@
 Node.js - basin
 ================
 
-[![build status](https://secure.travis-ci.org/jprichardson/basin.png)](http://travis-ci.org/jprichardson/basin)
+[![build status](https://secure.travis-ci.org/skywrite/basin.png)](http://travis-ci.org/skywrite/basin)
 
 Deploy sites to Amazon S3
 

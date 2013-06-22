@@ -3,6 +3,7 @@
 * updated deps `batchflow`, `qflow`, `s3`, and `knox` for Node v0.10
 * fixed bad test case
 * changed output to be a bit cleaner
+* modified for NODE TLS strictness: https://github.com/LearnBoost/knox/issues/153 && https://github.com/awssum/awssum/issues/164
 
 0.1.1 / 2013-02-16
 ------------------

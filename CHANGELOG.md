@@ -1,3 +1,7 @@
+0.2.1 / 2013-08-22
+------------------
+* updated bug with dep not required
+
 0.2.0 / 2013-06-22
 ------------------
 * updated deps `batchflow`, `qflow`, `s3`, and `knox` for Node v0.10

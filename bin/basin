@@ -4,7 +4,7 @@
 
 var program = require('commander')
   , basin = require('../lib/basin')
-  , S3 = require('../lib/S3').S3
+  , S3 = require('../lib/s3').S3
   , fs = require('fs-extra')
   , cl = require('cl')
   , colors = require('colors')

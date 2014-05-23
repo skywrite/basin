@@ -1,3 +1,7 @@
+0.3.0 / 2014-05-23
+------------------
+* fix bug for case sensitive file systems #3
+
 0.2.1 / 2013-08-22
 ------------------
 * updated bug with dep not required
